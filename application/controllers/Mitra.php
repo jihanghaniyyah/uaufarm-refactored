@@ -22,9 +22,9 @@ class Mitra extends CI_Controller
 
         // Konfigurasi untuk pagination
         $config['base_url'] = 'http://localhost/choirunfarm/mitra/index';
-        $config['total_rows'] = $this->Mitra_model->countAllMitra();
-        $config['per_page'] = 10;
-        $config['num_links'] = 10;
+        $config['total_rows'] = $this->Mitra_model->countAllmitra();
+        $config['per_page'] = 20;
+        $config['num_links'] = 20;
 
         // styling
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';

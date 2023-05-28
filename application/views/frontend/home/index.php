@@ -109,6 +109,61 @@
     <!-- End About Product Section -->
 
 
+
+
+    <!-- ======= Layanan ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Sosial Media</h2>
+        </div>
+
+        <!-- Card untuk menampilkan kritik dan saran -->
+        <div class="row">
+          <div class="col-md-6 col-lg-3  ">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-whatsapp"></i></div>
+              <h4 class="title"><a href="http://wa.me/6285156761657">Whatsapp</a></h4>
+              <p class="description">Daftar jadi distributor lewat wa</p>
+            </div>
+          </div>
+
+       
+          <div class="col-md-6 col-lg-3  ">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-telegram"></i></div>
+              <h4 class="title"><a href="https://t.me/choirunfarm">Telegram</a></h4>
+              <p class="description">Channel Telegram UAU Farm </p>
+            </div>
+          </div>
+
+     
+          <div class="col-md-6 col-lg-3 ">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-instagram"></i></div>
+              <h4 class="title"><a href="https://instagram.com/choirun_annas?igshid=MzNlNGNkZWQ4Mg==">Instagram</a></h4>
+              <p class="description">Akun Instagram UAU Farm</p>
+            </div>
+          </div>
+
+          
+          <div class="col-md-6 col-lg-3 ">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-youtube"></i></div>
+              <h4 class="title"><a href="https://www.youtube.com/channel/UCR87fpmqqEFNNHeR4zP4BXQ">Youtube</a></h4>
+              <p class="description">Channel youtube UAUFARM untuk video review produk</p>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section><!-- Akhir Layanan-->
+
+    
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact">
       <div class="container">
@@ -116,7 +171,6 @@
         <div class="section-title" data-aos="fade-up">
           <h2>Kontak Kami</h2>
         </div>
-
 
         <div class="row">
 

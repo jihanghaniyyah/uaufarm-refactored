@@ -19,7 +19,7 @@ class Mitra_model extends CI_model
         return $this->db->get('mitra', $limit, $start)->result_array();
     }
 
-    public function countAllmitra()
+    public function countAllMitra()
     {
         return $this->db->get('mitra')->num_rows();
     }

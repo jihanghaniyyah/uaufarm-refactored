@@ -23,8 +23,8 @@ class Kategori extends CI_Controller
         // Konfigurasi untuk pagination
         $config['base_url'] = 'http://localhost/choirunfarm/kategori/index';
         $config['total_rows'] = $this->Kategori_model->countAllKategori();
-        $config['per_page'] = 10;
-        $config['num_links'] = 10;
+        $config['per_page'] = 20;
+        $config['num_links'] = 20;
 
         // styling
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';

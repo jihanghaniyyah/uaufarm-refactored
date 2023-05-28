@@ -37,12 +37,15 @@
                             <?= form_error('nomor_hp', '<small class="text-danger">', '</small>'); ?>
                         </div>
 
-                        
-                        <div class="form-group">
-                            <label for="id_kategori">ID Kategori</label>
-                            <input type="text" class="form-control" name="id_kategori" id="id_kategori" value="<?= set_value('id_kategori') ?: $mitra["id_kategori"]; ?>">
-                            <?= form_error('id_kategori', '<small class="text-danger">', '</small>'); ?>
-                        </div>
+                       
+                        <label for="id_kategori">ID Kategori</label>
+                        <select name="id_kategori" class="custom-select">
+                            <option value="1" selected>1 : Perikanan</option>      
+                            <option value="2" selected>2 : Pertanian</option>                           
+                                                                          
+                                                     
+                        </select>
+                        <?= form_error('id_kategori', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         <div class="form-group">
                             <label for="nama">Koordinat</label>
