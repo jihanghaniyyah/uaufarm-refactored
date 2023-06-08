@@ -110,31 +110,42 @@ class AdminKategori extends CI_Controller
 
     public function update($id_kategori)
     {
-
-        $data['kategori'] = $this->Kategori_model->getDataById($id_kategori);
         $this->form_validation->set_rules('nama_kategori', 'Nama_kategori', 'required');
 
-
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Update Data';
-            $product = $this->db->get_where('kategori', array('id_kategori' => $id_kategori))->row();
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar');
-            $this->load->view('templates/topbar');
-            $this->load->view('backend/kategori/update', $data);
-            $this->load->view('templates/footer');
+            $this->showUpdateForm($id_kategori);
         } else {
-            $data = [
-                'nama_kategori' => htmlspecialchars($this->input->post('nama_kategori', true)),
-            ];
-            $this->db->where('id_kategori', $id_kategori);
-            $this->db->update('kategori', $data);
-            $this->session->set_flashdata('message', 'Diubah');
-            redirect('adminkategori');
+            $this->updateData($id_kategori);
         }
     }
 
+    private function showUpdateForm($id_kategori)
+    {
+        $data['title'] = 'Update Data';
+        $data['kategori'] = $this->Kategori_model->getDataById($id_kategori);
 
+        $this->loadUpdate('backend/kategori/update', $data);
+    }
+
+    private function updateData($id_kategori)
+    {
+        $data = [
+            'nama_kategori' => htmlspecialchars($this->input->post('nama_kategori', true)),
+        ];
+        $this->db->where('id_kategori', $id_kategori);
+        $this->db->update('kategori', $data);
+        $this->session->set_flashdata('message', 'Diubah');
+        redirect('adminkategori');
+    }
+    private function loadUpdate($view, $data)
+    {
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view($view, $data);
+        $this->load->view('templates/footer');
+    }
+    
     public function delete($id_kategori)
     {
         $this->db->delete('kategori', ['id_kategori' => $id_kategori]);
