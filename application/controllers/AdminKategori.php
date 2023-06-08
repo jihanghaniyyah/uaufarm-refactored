@@ -8,7 +8,7 @@ class AdminKategori extends CI_Controller
         parent::__construct();
         $this->load->helper("url");
         $this->load->model('Kategori_model');
-        
+
         is_logout();
         $this->user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
     }
@@ -19,13 +19,23 @@ class AdminKategori extends CI_Controller
         $data['title'] = 'List Of Data';
         $this->load->library('pagination');
 
-        // Konfigurasi untuk pagination
+        $config = $this->configurePagination();
+
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        $data['kategori'] = $this->Kategori_model->getData($config['per_page'], $data['start']);
+
+        $this->loadViews($data);
+    }
+
+    private function configurePagination()
+    {
         $config['base_url'] = 'http://localhost/choirunfarm/adminkategori/index';
         $config['total_rows'] = $this->Kategori_model->countAllKategori();
         $config['per_page'] = 20;
         $config['num_links'] = 20;
 
-        // styling
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
 
@@ -52,12 +62,12 @@ class AdminKategori extends CI_Controller
         $config['num_tag_close'] = '</li>';
 
         $config['attributes'] = array('class' => 'page-link');
-       
-        $this->pagination->initialize($config);
 
-        $data['start'] = $this->uri->segment(3);
-        $data['kategori'] = $this->Kategori_model->getData($config['per_page'], $data['start']);
+        return $config;
+    }
 
+    private function loadViews($data)
+    {
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar');
@@ -68,7 +78,7 @@ class AdminKategori extends CI_Controller
     public function create()
     {
         $this->form_validation->set_rules('nama_kategori', 'Nama_kategori', 'required');
-        
+
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah Data';
@@ -97,13 +107,13 @@ class AdminKategori extends CI_Controller
         $this->load->view('backend/kategori/read', $data);
         $this->load->view('templates/footer');
     }
-   
+
     public function update($id_kategori)
     {
 
         $data['kategori'] = $this->Kategori_model->getDataById($id_kategori);
         $this->form_validation->set_rules('nama_kategori', 'Nama_kategori', 'required');
-     
+
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Update Data';
@@ -131,5 +141,5 @@ class AdminKategori extends CI_Controller
         $this->session->set_flashdata('message', 'Dihapus');
         redirect('adminkategori');
     }
- 
+
 }
