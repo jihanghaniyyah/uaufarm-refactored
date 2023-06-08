@@ -33,19 +33,26 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('new_password', 'Password', 'required|min_length[8]');
         $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'required|matches[new_password]');
 
-        // Jika validasi gagal
         if ($this->form_validation->run() == FALSE) {
-            $data = [
-                'judul' => 'Tambah Pengguna',
-                'user' => $this->user
-            ];
-
-            $this->templating->load('admin/tambah-pengguna', $data);
-            // jika lolos validasi
+            $this->showTambahPenggunaForm();
         } else {
-            // tambah data ke database
-            $this->model->addPengguna();
+            $this->addPenggunaToDatabase();
         }
+    }
+
+    private function showTambahPenggunaForm()
+    {
+        $data = [
+            'judul' => 'Tambah Pengguna',
+            'user' => $this->user
+        ];
+        
+        $this->templating->load('admin/tambah-pengguna', $data);
+    }
+
+    private function addPenggunaToDatabase()
+    {
+        $this->model->addPengguna();
     }
 
     public function hapus_pengguna()

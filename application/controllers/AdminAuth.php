@@ -22,41 +22,91 @@ class AdminAuth extends CI_Controller
 
     public function _login()
     {
-        $username = htmlspecialchars($this->input->post('username', true));
-        $password = $this->input->post('pass', true);
+        $username = htmlspecialchars($this->input->post('username',true));
+        $password = $this->input->post('pass',true);
 
         $user = $this->db->get_where('user', ['username' => $username])->row_array();
 
-        // jika ada username yang di input oleh user
         if ($user) {
-            // cek password, jika password yang diinput user sama dengan yang ada di database
-            if (password_verify($password, $user['password'])) {
-                // siapkan user data
-                $data = [
-                    'username' => $user['username'],
-                    'role_id' => $user['role_id']
-                ];
-
-                $this->session->set_userdata($data);
-
-                // redirect (bisa juga redirect menurut role)
-                $this->session->set_flashdata('message',  $data['username']);
-                if ($user['role_id'] >= 1) {
-                    redirect('admininformasi');
-                } else {
-                    redirect('admininformasi');
-                }
-            } else {
-                // Jika password salah
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username / Password salah!</div>');
-                redirect('adminauth');
-            }
+            $this->checkPasswordAndLogin($password,$user);
         } else {
-            // jika username tidak terdaftar pada database
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
-            redirect('adminauth');
+            $this->handleInvalidUsername();
         }
     }
+
+    private function checkPasswordAndLogin($password,$user)
+    {
+        if (password_verify($password, $user['password'])) {
+            $this->setUserDataAndRedirect($user);
+        } else {
+            $this->handleInvalidPassword();
+        }
+    }
+
+    private function setUserDataAndRedirect($user)
+    {
+        $data = [
+            'username' => $user['username'],
+            'role_id' => $user['role_id']
+        ];
+
+        $this->session->set_userdata($data);
+
+        $this->session->set_flashdata('message',  $data['username']);
+
+        $redirectUrl = ($user['role_id'] >= 1) ? 'admininformasi' : 'admininformasi';
+        redirect($redirectUrl);
+    }
+
+    private function handleInvalidPassword()
+    {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username / Password salah!</div>');
+        redirect('adminauth');
+    }
+
+    private function handleInvalidUsername()
+    {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
+        redirect('adminauth');
+    }
+
+    // public function _login()
+    // {
+    //     $username = htmlspecialchars($this->input->post('username', true));
+    //     $password = $this->input->post('pass', true);
+
+    //     $user = $this->db->get_where('user', ['username' => $username])->row_array();
+
+    //     // jika ada username yang di input oleh user
+    //     if ($user) {
+    //         // cek password, jika password yang diinput user sama dengan yang ada di database
+    //         if (password_verify($password, $user['password'])) {
+    //             // siapkan user data
+    //             $data = [
+    //                 'username' => $user['username'],
+    //                 'role_id' => $user['role_id']
+    //             ];
+
+    //             $this->session->set_userdata($data);
+
+    //             // redirect (bisa juga redirect menurut role)
+    //             $this->session->set_flashdata('message',  $data['username']);
+    //             if ($user['role_id'] >= 1) {
+    //                 redirect('admininformasi');
+    //             } else {
+    //                 redirect('admininformasi');
+    //             }
+    //         } else {
+    //             // Jika password salah
+    //             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username / Password salah!</div>');
+    //             redirect('adminauth');
+    //         }
+    //     } else {
+    //         // jika username tidak terdaftar pada database
+    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
+    //         redirect('adminauth');
+    //     }
+    // }
 
     public function logout()
     {
