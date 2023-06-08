@@ -91,20 +91,17 @@
 <!-- End of Footer -->
 
 <!-- Modal Hapus Data Pengguna -->
-<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header badge-primary">
-                <h5 class="modal-title">Hapus <?= $judul; ?></h5>
+                <h5 class="modal-title" id="confirmationModalTitle"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/hapus_pengguna'); ?>" method="post">
-                <div class="modal-body">
-                    Apakah anda yakin ingin menghapus data ini?
-                    <input type="hidden" name="id" id="id">
-                </div>
+            <form id="confirmationForm" action="" method="post">
+                <div class="modal-body" id="confirmationModalBody"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Yakin</button>
@@ -137,13 +134,16 @@
 
 <script>
     $(document).ready(function() {
-        /*
-            saat user klik tombol hapus dengan id (#hapus-pengguna),
-            isi value dari field yang memiliki class (modal-body) id (id),
-            dengan value dari attribute data-id
-        */
         $(document).on("click", "#hapus-pengguna", function() {
-            $(".modal-body #id").val($(this).data('id'));
+            var id = $(this).data('id');
+            var title = "Hapus <?= $judul; ?>";
+            var body = "Apakah anda yakin ingin menghapus data ini?";
+
+            $("#confirmationModalTitle").text(title);
+            $("#confirmationModalBody").text(body);
+            $("#confirmationForm").attr("action", "<?= base_url('admin/hapus_pengguna'); ?>?id=" + id);
+
+            $('#confirmationModal').modal('show');
         });
     });
 </script>

@@ -58,12 +58,8 @@ class Admin extends CI_Controller
     public function hapus_pengguna()
     {
         $id = $this->input->post('id');
-        // Hapus data dari tabel user, dimana id user sesuai dengan yang dikirimkan
-        // Hapus semua pengaduan dari data user yang dihapus
-        $this->db->where('id', $id);
-        $this->db->delete('user');
-        $this->db->where('id', $id);
-        $this->db->delete('user');
+        echo $id;
+        $this->db->where('id', $id)->delete('user');
         $this->session->set_flashdata('msg', 'dihapus.');
         redirect('data-pengguna');
     }

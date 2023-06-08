@@ -56,5 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['data-pengguna'] = 'admin/pengguna';
 $route['tambah-pengguna'] = 'admin/tambah_pengguna';
+$route['hapus-pengguna/(:any)'] = 'admin/hapus_pengguna/$1';
 
 $route['notfound'] = 'login';
