@@ -12,7 +12,7 @@
                     <h2 data-aos="fade-up">Cek Lokasi Mitra Bisnis UAU Farm</h2>
 
                     <div data-aos="fade-up" data-aos-delay="800">
-                        <a href="maps" class="btn-get-started scrollto">Maps</a>
+                        <a href="usermaps" class="btn-get-started scrollto">Maps</a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">

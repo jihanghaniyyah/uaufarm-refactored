@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kategori extends CI_Controller
+class AdminKategori extends CI_Controller
 {
     public function __construct()
     {
@@ -17,11 +17,10 @@ class Kategori extends CI_Controller
     public function index()
     {
         $data['title'] = 'List Of Data';
-        // Library Pagination
         $this->load->library('pagination');
 
         // Konfigurasi untuk pagination
-        $config['base_url'] = 'http://localhost/choirunfarm/kategori/index';
+        $config['base_url'] = 'http://localhost/choirunfarm/adminkategori/index';
         $config['total_rows'] = $this->Kategori_model->countAllKategori();
         $config['per_page'] = 20;
         $config['num_links'] = 20;
@@ -53,10 +52,8 @@ class Kategori extends CI_Controller
         $config['num_tag_close'] = '</li>';
 
         $config['attributes'] = array('class' => 'page-link');
-
        
         $this->pagination->initialize($config);
-
 
         $data['start'] = $this->uri->segment(3);
         $data['kategori'] = $this->Kategori_model->getData($config['per_page'], $data['start']);
@@ -67,8 +64,6 @@ class Kategori extends CI_Controller
         $this->load->view('backend/kategori/index', $data);
         $this->load->view('templates/footer');
     }
-
- 
 
     public function create()
     {
@@ -88,11 +83,10 @@ class Kategori extends CI_Controller
             ];
             $this->db->insert('kategori', $data);
             $this->session->set_flashdata('message', 'Ditambahkan');
-            redirect('kategori');
+            redirect('adminkategori');
         }
     }
 
-    
     public function read($id_kategori)
     {
         $data['kategori'] = $this->Kategori_model->getDataById($id_kategori);
@@ -103,8 +97,6 @@ class Kategori extends CI_Controller
         $this->load->view('backend/kategori/read', $data);
         $this->load->view('templates/footer');
     }
-
-  
    
     public function update($id_kategori)
     {
@@ -128,7 +120,7 @@ class Kategori extends CI_Controller
             $this->db->where('id_kategori', $id_kategori);
             $this->db->update('kategori', $data);
             $this->session->set_flashdata('message', 'Diubah');
-            redirect('kategori');
+            redirect('adminkategori');
         }
     }
 
@@ -137,10 +129,7 @@ class Kategori extends CI_Controller
     {
         $this->db->delete('kategori', ['id_kategori' => $id_kategori]);
         $this->session->set_flashdata('message', 'Dihapus');
-        redirect('kategori');
+        redirect('adminkategori');
     }
-
-    
-
-   
+ 
 }

@@ -53,7 +53,7 @@
                             <?= form_error('koordinat', '<small class="text-danger">', '</small>'); ?>
                         </div>
                        
-                    <a href="<?= base_url('mitra'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
+                    <a href="<?= base_url('adminmitra'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
                     <button class="btn btn-primary float-right" type="submit" name="submit">Simpan Data</button>
                     
                 </form>

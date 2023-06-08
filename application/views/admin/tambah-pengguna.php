@@ -44,17 +44,17 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="pass1" id="password" class="form-control <?= form_error('pass1') ? 'is-invalid' : 'border-left-primary' ?>" placeholder="Kata sandi" value="<?= set_value('pass1'); ?>">
+                            <input type="password" name="new_password" id="password" class="form-control <?= form_error('new_password') ? 'is-invalid' : 'border-left-primary' ?>" placeholder="Kata sandi" value="<?= set_value('new_password'); ?>">
                             <div class="invalid-feedback">
-                                <?= form_error('pass1'); ?>
+                                <?= form_error('new_password'); ?>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="konfirmasi-password">Konfirmasi Password</label>
-                            <input type="password" name="pass2" id="konfirmasi-password" class="form-control <?= form_error('pass2') ? 'is-invalid' : 'border-left-primary' ?>" placeholder="Ulangi kata sandi">
+                            <input type="password" name="confirm_password" id="konfirmasi-password" class="form-control <?= form_error('confirm_password') ? 'is-invalid' : 'border-left-primary' ?>" placeholder="Ulangi kata sandi">
                             <div class="invalid-feedback">
-                                <?= form_error('pass2'); ?>
+                                <?= form_error('confirm_password'); ?>
                             </div>
                         </div>
 

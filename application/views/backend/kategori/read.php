@@ -13,7 +13,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>Nama Kategori        :</b>      <?= $kategori['nama_kategori'];     ?></li>
                               
-                        <li class="list-group-item"><a href="<?= base_url('kategori'); ?>" class="btn btn-primary float-right">Kembali</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('adminkategori'); ?>" class="btn btn-primary float-right">Kembali</a></li>
                     </ul>
                 </div>
             </div>

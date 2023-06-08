@@ -12,7 +12,7 @@
                   
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('mitra/create'); ?>" method="post">
+                    <form action="<?= base_url('adminmitra/create'); ?>" method="post">
                     <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" name="nama" id="nama" value="<?= set_value('nama'); ?>">
@@ -48,7 +48,7 @@
                         </div>
                        
                        
-                        <a href="<?= base_url('mitra'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
+                        <a href="<?= base_url('adminmitra'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
                         <button class="btn btn-primary float-right" type="submit" name="submit">Tambah Data</button>
                     </form>
                 </div>

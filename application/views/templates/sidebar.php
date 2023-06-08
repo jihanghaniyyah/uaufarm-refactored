@@ -22,26 +22,26 @@
 
 <!-- Nav Item - Dashboard -->
             <li class="nav-item ">
-                <a class="nav-link" href="informasi">
+                <a class="nav-link" href="admininformasi">
                 <i class="fas fa-fw fa-chart-area"></i>
                     <span>Informasi</span></a>
             </li>
   
 
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('mitra'); ?>">
+              <a class="nav-link" href="<?= base_url('adminmitra'); ?>">
               <i class="fas fa-fw fa-table"></i>
                 <span>Mitra</span></a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('kategori'); ?>">
+              <a class="nav-link" href="<?= base_url('adminkategori'); ?>">
               <i class="fas fa-fw fa-table"></i>
                 <span>Kategori</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('home'); ?>">
+              <a class="nav-link" href="<?= base_url('userhome'); ?>">
                 <i class="fas fa-fw fa-globe"></i>
                 <span>Website</span></a>
             </li>
@@ -84,7 +84,7 @@
       <div class="modal-body">Klik "logout" jika ingin mengakhiri sesi ini.</div>
       <div class="modal-footer">
         <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-        <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
+        <a class="btn btn-primary" href="<?= base_url('adminauth/logout') ?>">Logout</a>
       </div>
     </div>
   </div>

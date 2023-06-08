@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Mitra extends CI_Controller
+class AdminMitra extends CI_Controller
 {
     public function __construct()
     {
@@ -17,11 +17,10 @@ class Mitra extends CI_Controller
     public function index()
     {
         $data['title'] = 'List Of Data';
-        // Library Pagination
         $this->load->library('pagination');
 
         // Konfigurasi untuk pagination
-        $config['base_url'] = 'http://localhost/choirunfarm/mitra/index';
+        $config['base_url'] = 'http://localhost/choirunfarm/adminmitra/index';
         $config['total_rows'] = $this->Mitra_model->countAllmitra();
         $config['per_page'] = 20;
         $config['num_links'] = 20;
@@ -69,11 +68,8 @@ class Mitra extends CI_Controller
         $this->load->view('templates/footer');
     }
 
- 
-
     public function create()
     {
-    
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nama_toko', 'Nama_toko', 'required');
         $this->form_validation->set_rules('nomor_hp', 'Nomor_hp', 'required');
@@ -98,7 +94,7 @@ class Mitra extends CI_Controller
             ];
             $this->db->insert('mitra', $data);
             $this->session->set_flashdata('message', 'Ditambahkan');
-            redirect('mitra');
+            redirect('adminmitra');
         }
     }
 
@@ -114,8 +110,6 @@ class Mitra extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-  
-   
     public function update($id_mitra)
     {
 
@@ -145,16 +139,15 @@ class Mitra extends CI_Controller
             $this->db->where('id_mitra', $id_mitra);
             $this->db->update('mitra', $data);
             $this->session->set_flashdata('message', 'Diubah');
-            redirect('mitra');
+            redirect('adminmitra');
         }
     }
-
 
     public function delete($id_mitra)
     {
         $this->db->delete('mitra', ['id_mitra' => $id_mitra]);
         $this->session->set_flashdata('message', 'Dihapus');
-        redirect('mitra');
+        redirect('adminmitra');
     }
 
     public function export(){
@@ -168,8 +161,4 @@ class Mitra extends CI_Controller
         $this->load->view('backend/mitra/export', $data);
         
       }
-
-    
-
-   
 }

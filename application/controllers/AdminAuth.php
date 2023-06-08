@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class AdminAuth extends CI_Controller
 {
     public function index()
     {
@@ -16,7 +16,6 @@ class Auth extends CI_Controller
             $data['judul'] =  'Halaman Login';
             $this->load->view('auth/index', $data);
         } else {
-            // jika lolos validasi, proses..
             $this->_login();
         }
     }
@@ -26,7 +25,6 @@ class Auth extends CI_Controller
         $username = htmlspecialchars($this->input->post('username', true));
         $password = $this->input->post('pass', true);
 
-        // get user data
         $user = $this->db->get_where('user', ['username' => $username])->row_array();
 
         // jika ada username yang di input oleh user
@@ -39,41 +37,39 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id']
                 ];
 
-                // set userdata
                 $this->session->set_userdata($data);
 
                 // redirect (bisa juga redirect menurut role)
                 $this->session->set_flashdata('message',  $data['username']);
                 if ($user['role_id'] >= 1) {
-                    redirect('informasi');
+                    redirect('admininformasi');
                 } else {
-                    redirect('informasi');
+                    redirect('admininformasi');
                 }
             } else {
                 // Jika password salah
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username / Password salah!</div>');
-                redirect('auth');
+                redirect('adminauth');
             }
         } else {
             // jika username tidak terdaftar pada database
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
-            redirect('auth');
+            redirect('adminauth');
         }
     }
 
     public function logout()
     {
-        // unset session userdata
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil keluar!</div>');
-        redirect('auth');
+        redirect('adminauth');
     }
 
     public function notfound()
     {
         $data['judul'] = 'Page Not Found';
-        $this->load->view('auth/error_404', $data);
+        $this->load->view('adminauth/error_404', $data);
     }
 }

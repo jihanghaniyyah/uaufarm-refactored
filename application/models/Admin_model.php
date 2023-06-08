@@ -9,10 +9,10 @@ class Admin_model extends CI_Model
         return $this->db->get_where('user', 'user.role_id !=1')->result_array();
     }
 
-    public function tambah_pengguna()
+    public function addPengguna()
     {
         // tangkap data dan encrypt password
-        $password = password_hash($this->input->post('pass1'), PASSWORD_DEFAULT);
+        $password = password_hash($this->input->post('new_password'), PASSWORD_DEFAULT);
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'nomor_hp' => htmlspecialchars($this->input->post('nomor_hp', true)),
@@ -22,11 +22,8 @@ class Admin_model extends CI_Model
             'role_id' => 2
         ];
 
-        // insert data ke database
         $this->db->insert('user', $data);
-        // set session
         $this->session->set_flashdata('msg', 'ditambahkan.');
-        // kembalikan ke halaman pengguna
         redirect('data-pengguna');
     }
 }

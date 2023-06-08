@@ -16,8 +16,8 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <a href="<?= base_url('mitra/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm my-2"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
-                    <a href="<?= base_url('mitra/export') ?>" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm my-2">Export Data</a>
+                    <a href="<?= base_url('adminmitra/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm my-2"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
+                    <a href="<?= base_url('adminmitra/export') ?>" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm my-2">Export Data</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -41,9 +41,9 @@
                                         <td><?= $m['nomor_hp'];   ?></td>
                                         <td><?= $m['nama_kategori'];?></td>
                                         <td>
-                                            <a href="<?= base_url('mitra/read/') . $m['id_mitra']; ?>" class="badge badge-warning">Detail</a>
-                                            <a href="<?= base_url('mitra/update/') . $m['id_mitra']; ?>" class="badge badge-success">Update</a>
-                                            <a href="<?= base_url('mitra/delete/') . $m['id_mitra']; ?>" class="badge badge-danger" onclick="return confirm('yakin mau didelete?');">Delete</a>
+                                            <a href="<?= base_url('adminmitra/read/') . $m['id_mitra']; ?>" class="badge badge-warning">Detail</a>
+                                            <a href="<?= base_url('adminmitra/update/') . $m['id_mitra']; ?>" class="badge badge-success">Update</a>
+                                            <a href="<?= base_url('adminmitra/delete/') . $m['id_mitra']; ?>" class="badge badge-danger" onclick="return confirm('Yakin mau dihapus?');">Delete</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

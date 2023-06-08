@@ -1,19 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Maps extends CI_Controller {
+class UserMaps extends CI_Controller {
 
 	public function index()
 	{
         $this->load->model('Mitra_model');
         $this->load->model('Admin_model');
-      
-      
-        
+
         $data['mitra'] = $this->Mitra_model->getAllData();
         $data['user'] = $this->Admin_model->getPengguna();
-        
-    
 
         $this->load->view('templates2/header', $data);
         $this->load->view('templates2/topbar', $data);
@@ -21,6 +17,4 @@ class Maps extends CI_Controller {
         $this->load->view('templates2/footer');
 	}
 
-
-  
 }

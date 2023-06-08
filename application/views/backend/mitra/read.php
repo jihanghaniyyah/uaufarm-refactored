@@ -18,7 +18,7 @@
                         <li class="list-group-item"><b>Koordinat    :</b>      <?= $mitra['koordinat'];?></li>
                     
                       
-                        <li class="list-group-item"><a href="<?= base_url('mitra'); ?>" class="btn btn-primary float-right">Kembali</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('adminmitra'); ?>" class="btn btn-primary float-right">Kembali</a></li>
                     </ul>
                 </div>
             </div>

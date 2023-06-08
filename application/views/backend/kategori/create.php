@@ -12,7 +12,7 @@
                   
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('kategori/create'); ?>" method="post">
+                    <form action="<?= base_url('adminkategori/create'); ?>" method="post">
                     <div class="form-group">
                             <label for="nama_kategori">Nama Kategori</label>
                             <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="<?= set_value('nama_kategori'); ?>">
@@ -20,7 +20,7 @@
                         </div>
 
                                   
-                        <a href="<?= base_url('kategori'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
+                        <a href="<?= base_url('adminkategori'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
                         <button class="btn btn-primary float-right" type="submit" name="submit">Tambah Data</button>
                     </form>
                 </div>

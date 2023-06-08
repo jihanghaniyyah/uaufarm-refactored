@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Data Kaegori</h1>
+    <h1 class="h3 mb-4 text-gray-800">Data Kategori</h1>
     <?php if ($this->session->flashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data<strong> berhasil!</strong> <?= $this->session->flashdata('message'); ?><button type="button" class="close" data-dismiss="alert" arial-label="Close">
@@ -16,7 +16,7 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <a href="<?= base_url('kategori/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm my-2"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
+                    <a href="<?= base_url('adminkategori/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm my-2"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
                     
                 </div>
                 <div class="card-body">
@@ -36,9 +36,9 @@
                                         <td><?= $k['nama_kategori'];     ?></td>
                                         
                                         <td>
-                                            <a href="<?= base_url('kategori/read/') . $k['id_kategori']; ?>" class="badge badge-warning">Detail</a>
-                                            <a href="<?= base_url('kategori/update/') . $k['id_kategori']; ?>" class="badge badge-success">Update</a>
-                                            <a href="<?= base_url('kategori/delete/') . $k['id_kategori']; ?>" class="badge badge-danger" onclick="return confirm('yakin mau didelete?');">Delete</a>
+                                            <a href="<?= base_url('adminkategori/read/') . $k['id_kategori']; ?>" class="badge badge-warning">Detail</a>
+                                            <a href="<?= base_url('adminkategori/update/') . $k['id_kategori']; ?>" class="badge badge-success">Update</a>
+                                            <a href="<?= base_url('adminkategori/delete/') . $k['id_kategori']; ?>" class="badge badge-danger" onclick="return confirm('yakin mau didelete?');">Delete</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

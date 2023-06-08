@@ -1,9 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Begin Page Content -->
-<div class="container-fluid">
-
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Update Data</h1>
 
@@ -26,7 +23,7 @@
                         </div>
 
                        
-                    <a href="<?= base_url('kategori'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
+                    <a href="<?= base_url('adminkategori'); ?>" class="btn btn-success float-left" type="submit" name="submit">Kembali</a>
                     <button class="btn btn-primary float-right" type="submit" name="submit">Simpan Data</button>
                     
                 </form>
